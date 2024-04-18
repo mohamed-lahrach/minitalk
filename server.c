@@ -43,7 +43,7 @@ void sig_handler(int signo)
 	}
 }
 
-int main(int argc, char *argv[])
+int main(void)
 {
     signal(SIGUSR1, sig_handler);
     signal(SIGUSR2, sig_handler);

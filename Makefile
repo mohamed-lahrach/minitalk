@@ -1,16 +1,26 @@
-	
-CC = cc
+NAME = server
+NAME_2 = client
+
+
 CFLAGS = -Wall -Wextra -Werror
+SRCS =   server.c
+SRCC =   client.c
+OBGS = $(SRCS:.c=.o)
+OBGC = $(SRCC:.c=.o)
+OBGSB = $(SRCSB:.c=.o)
+OBGCB = $(SRCCB:.c=.o)
+all : $(NAME) $(NAME_2)
 
-all: client server
+$(NAME): $(OBGS)
+	$(CC) $(CFLAGS) $(OBGS) -o $(NAME)
 
-client: client.c
-    $(CC) $(CFLAGS) -o client client.c
-
-server: server.c
-    $(CC) $(CFLAGS) -o server server.c
-
+$(NAME_2): $(OBGC)
+	$(CC) $(CFLAGS) $(OBGC) -o $(NAME_2)
+    
 clean:
-    rm -f client server
+	rm -f $(OBGS) $(OBGC) $(OBGSB) $(OBGCB) 
 
-.PHONY: all clean
+fclean: clean
+	rm -f $(NAME) $(NAME_2) $(NAME_3) $(NAME_4)  
+
+re: fclean all
