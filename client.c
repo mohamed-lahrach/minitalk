@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlahrach <mlahrach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/18 20:42:14 by mlahrach          #+#    #+#             */
+/*   Updated: 2024/04/18 20:46:33 by mlahrach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,6 +41,7 @@ long int	ft_atoi(const char *str)
 		return (0);
 	return (rus * sin);
 }
+
 void	ft_putstr(char *str)
 {
 	while (*str)
@@ -37,6 +50,7 @@ void	ft_putstr(char *str)
 		str++;
 	}
 }
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -48,6 +62,7 @@ int	ft_strlen(char *str)
 	}
 	return (i);
 }
+
 void	char_sent(char c, long int pid)
 {
 	int	bit;
@@ -78,17 +93,18 @@ void	char_sent(char c, long int pid)
 
 int	main(int argc, char *argv[])
 {
+	long int	pid;
+	int			i;
+
 	if (argc == 3)
 	{
-		long int pid = ft_atoi(argv[1]);
+		pid = ft_atoi(argv[1]);
 		if (pid <= 0 || pid > 2147483647 || ft_strlen(argv[1]) > 12)
 		{
 			ft_putstr("Invalid pid\n");
 			exit(0);
 		}
-
-		int i = 0;
-
+		i = 0;
 		while (argv[2][i])
 		{
 			char_sent(argv[2][i], pid);
@@ -97,7 +113,5 @@ int	main(int argc, char *argv[])
 		char_sent(argv[2][i], pid);
 	}
 	else
-	{
 		ft_putstr("There is an error in the arguments!");
-	}
 }
