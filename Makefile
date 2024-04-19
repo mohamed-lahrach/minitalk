@@ -3,8 +3,8 @@ NAME_2 = client
 
 
 CFLAGS = -Wall -Wextra -Werror
-SRCS =   server.c
-SRCC =   client.c
+SRCS =  utils.c server.c
+SRCC =  utils.c client.c
 OBGS = $(SRCS:.c=.o)
 OBGC = $(SRCC:.c=.o)
 OBGSB = $(SRCSB:.c=.o)
